@@ -11,7 +11,7 @@ class NormalizerTest(unittest.TestCase):
         self.normalizer = Normalizer()
 
     def normalize(self, words):
-        parsed_words = map(self.parser, words)
+        parsed_words = [self.parser(word) for word in words]
         return self.normalizer(parsed_words)
 
     def test_normalize(self):
