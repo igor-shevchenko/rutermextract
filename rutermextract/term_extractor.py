@@ -24,6 +24,9 @@ class Term(object):
     def __unicode__(self):
         return self.normalized
 
+    def __str__(self):
+        return self.normalized
+
 
 class TermExtractor(object):
     """

@@ -52,6 +52,9 @@ class ParsedWord(object):
     def __unicode__(self):
         return self.parsed.word
 
+    def __str__(self):
+        return self.parsed.word
+
 
 class Parser(object):
     """
