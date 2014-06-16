@@ -38,6 +38,9 @@ class TermExtractorTest(unittest.TestCase):
         strings = [term.normalized for term in result]
         self.assertTermsEqual(strings, [u'налётчик', u'ювелирный салон', u'челябинск', u'семь лет'])
 
+    def test_extract_without_duplicates(self):
+        self.assertListEqual(self.term_extractor(u'Проверка, проверка.', strings=True), [u'проверка'])
+
 
 if __name__ == '__main__':
     unittest.main()

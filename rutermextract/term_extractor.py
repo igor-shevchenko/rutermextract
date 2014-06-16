@@ -49,10 +49,11 @@ class TermExtractor(object):
         terms = [Term(chunk, self.normalizer(chunk)) for chunk in chunks]
 
         counter = Counter(terms)
-        for term in terms:
+        counted_terms = counter.keys()
+        for term in counted_terms:
             term.count = counter[term]
 
-        sorted_terms = self.ranker(terms, weight=weight)
+        sorted_terms = self.ranker(counted_terms, weight=weight)
         result = sorted_terms[:limit]
         if strings:
             return [term.normalized for term in result]
