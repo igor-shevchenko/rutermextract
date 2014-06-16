@@ -15,15 +15,15 @@ class TermExtractorTest(unittest.TestCase):
 
     def test_extract_terms_with_custom_weight(self):
         weight = lambda term: len(term.normalized)
-        self.assertItemsEqual(self.term_extractor(u'Налётчика на ювелирный салон в Челябинске осудили на восемь лет.',
-                                                  weight=weight, strings=True),
-                              [u'ювелирный салон', u'восемь лет', u'челябинск',  u'налётчик'])
+        self.assertListEqual(self.term_extractor(u'Налётчика на ювелирный салон в Челябинске осудили на восемь лет.',
+                                                 weight=weight, strings=True),
+                             [u'ювелирный салон', u'восемь лет', u'челябинск',  u'налётчик'])
 
     def test_extract_terms_with_limit(self):
         weight = lambda term: len(term.normalized)
-        self.assertItemsEqual(self.term_extractor(u'Налётчика на ювелирный салон в Челябинске осудили на восемь лет.',
-                                                  weight=weight, limit=2, strings=True),
-                              [u'ювелирный салон', u'восемь лет'])
+        self.assertListEqual(self.term_extractor(u'Налётчика на ювелирный салон в Челябинске осудили на восемь лет.',
+                                                 weight=weight, limit=2, strings=True),
+                             [u'ювелирный салон', u'восемь лет'])
 
     def test_extract_terms_as_terms(self):
         result = self.term_extractor(u'Налётчика на ювелирный салон в Челябинске осудили на семь лет.')
