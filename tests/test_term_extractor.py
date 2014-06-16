@@ -8,8 +8,16 @@ class TermExtractorTest(unittest.TestCase):
     def setUp(self):
         self.term_extractor = TermExtractor()
 
+    def assertTermsEqual(self, first, second):
+        # Во втором и третьем питонах методы для проверки последовательностей без учета порядка называются по-разному.
+        import sys
+        if sys.version_info >= (3, 0):
+            self.assertCountEqual(first, second)
+        else:
+            self.assertItemsEqual(first, second)
+
     def test_extract_terms(self):
-        self.assertItemsEqual(self.term_extractor(u'Налётчика на ювелирный салон в Челябинске осудили на семь лет.',
+        self.assertTermsEqual(self.term_extractor(u'Налётчика на ювелирный салон в Челябинске осудили на семь лет.',
                                                   strings=True),
                               [u'налётчик', u'ювелирный салон', u'челябинск', u'семь лет'])
 
@@ -28,7 +36,7 @@ class TermExtractorTest(unittest.TestCase):
     def test_extract_terms_as_terms(self):
         result = self.term_extractor(u'Налётчика на ювелирный салон в Челябинске осудили на семь лет.')
         strings = [term.normalized for term in result]
-        self.assertItemsEqual(strings, [u'налётчик', u'ювелирный салон', u'челябинск', u'семь лет'])
+        self.assertTermsEqual(strings, [u'налётчик', u'ювелирный салон', u'челябинск', u'семь лет'])
 
 
 if __name__ == '__main__':
