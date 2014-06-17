@@ -4,6 +4,11 @@ rutermextract
 
 Вдохновлённая `topia.termextract <https://pypi.python.org/pypi/topia.termextract/>`_ библиотека для извлечения ключевых слов из текстов на русском языке, использующая `pymorphy2 <http://pymorphy2.readthedocs.org/en/latest/>`_ для морфологического анализа.
 
+Установка
+=========
+
+    pip install rutermextract    
+
 Использование
 =============
 
