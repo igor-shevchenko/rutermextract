@@ -41,11 +41,11 @@ class TermExtractor(object):
         self.normalizer = normalizer or Normalizer()
         self.ranker = ranker or Ranker()
 
-    def __call__(self, text, limit=None, weight=None, strings=False):
+    def __call__(self, text, limit=None, weight=None, strings=False, nested=False):
         tokens = self.tokenizer(text)
         parsed_tokens = [self.parser(token) for token in tokens]
         iob_sequence = self.labeler(parsed_tokens)
-        chunks = self.extractor(parsed_tokens, iob_sequence)
+        chunks = self.extractor(parsed_tokens, iob_sequence, nested=nested)
         terms = [Term(chunk, self.normalizer(chunk)) for chunk in chunks]
 
         counter = Counter(terms)
