@@ -41,6 +41,11 @@ class TermExtractorTest(unittest.TestCase):
     def test_extract_without_duplicates(self):
         self.assertListEqual(self.term_extractor(u'Проверка, проверка.', strings=True), [u'проверка'])
 
+    def test_extract_terms_with_nested(self):
+        self.assertTermsEqual(self.term_extractor(u'Налётчика на ювелирный салон в Челябинске осудили на семь лет.',
+                                                  strings=True, nested=True),
+                              [u'налётчик', u'ювелирный салон', u'салон', u'челябинск', u'семь лет', u'года'])
+
 
 if __name__ == '__main__':
     unittest.main()
