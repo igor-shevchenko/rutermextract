@@ -2,7 +2,7 @@
 rutermextract
 =============
 
-Вдохновлённая `topia.termextract <https://pypi.python.org/pypi/topia.termextract/>`_ библиотека для извлечения ключевых слов из текстов на русском языке, использующая `pymorphy2 <http://pymorphy2.readthedocs.org/en/latest/>`_ для морфологического анализа.
+Библиотека для извлечения ключевых слов из текстов на русском языке. Для морфологического анализа используется `pymorphy2 <http://pymorphy2.readthedocs.org/en/latest/>`_. Разработка вдохновлена библиотекой `topia.termextract <https://pypi.python.org/pypi/topia.termextract/>`_, которая делает то же самое с англоязычными текстами.
 
 Установка
 =========
