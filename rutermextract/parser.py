@@ -40,7 +40,7 @@ class ParsedWord(object):
         return self.case_is('gent')
 
     def get_nominal(self):
-        inflected = self.parsed.inflect({'nomn'})
+        inflected = self.parsed.inflect(set(['nomn']))
         if inflected:
             return inflected.word
         # Слово не удаётся просклонять (например, это число)
