@@ -1,5 +1,8 @@
 # coding=utf-8
-from collections import Counter
+try:
+    from collections import Counter
+except ImportError:
+    from backport_collections import Counter
 from .tokenizer import Tokenizer
 from .parser import Parser
 from .labeler import IOBLabeler

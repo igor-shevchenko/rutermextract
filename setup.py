@@ -21,11 +21,13 @@ setup(
     requires = [
         'pymorphy2 (>=0.8)',
         'enum34 (>=1.0)',
+        'backport_collections (>=0.1)'
     ],
 
     install_requires = [
         'pymorphy2 >=0.8',
         'enum34 >=1.0',
+        'backport_collections (>=0.1)'
     ],
 
     classifiers=[
