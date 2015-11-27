@@ -1,6 +1,16 @@
 from setuptools import setup
+import sys
 
 VERSION = '0.2'
+
+install_requires = [
+    'pymorphy2 >=0.8'
+]
+
+if sys.version_info < (2, 7):
+    install_requires.append('backport_collections (>=0.1)')
+if sys.version_info < (3, 4):
+    install_requires.append('enum34 >=1.0')
 
 setup(
     name = 'rutermextract',
@@ -18,17 +28,7 @@ setup(
     url = 'https://github.com/igor-shevchenko/rutermextract',
     download_url = 'https://github.com/igor-shevchenko/rutermextract/tarball/%s' % VERSION,
 
-    requires = [
-        'pymorphy2 (>=0.8)',
-        'enum34 (>=1.0)',
-        'backport_collections (>=0.1)'
-    ],
-
-    install_requires = [
-        'pymorphy2 >=0.8',
-        'enum34 >=1.0',
-        'backport_collections (>=0.1)'
-    ],
+    install_requires = install_requires,
 
     classifiers=[
         'Development Status :: 4 - Beta',
