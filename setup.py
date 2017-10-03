@@ -17,7 +17,7 @@ setup(
     packages = ['rutermextract'],
 
     description = 'Term extraction for Russian language',
-    long_description = open('README.rst').read(),
+    long_description = open('README.rst', encoding="utf8").read(),
 
     version = VERSION,
 
