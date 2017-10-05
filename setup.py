@@ -1,5 +1,6 @@
 from setuptools import setup
 import sys
+from io import open
 
 VERSION = '0.2'
 
