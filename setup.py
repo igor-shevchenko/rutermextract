@@ -1,5 +1,6 @@
 from setuptools import setup
 import sys
+from io import open
 
 VERSION = '0.2'
 
@@ -17,7 +18,7 @@ setup(
     packages = ['rutermextract'],
 
     description = 'Term extraction for Russian language',
-    long_description = open('README.rst').read(),
+    long_description = open('README.rst', encoding="utf8").read(),
 
     version = VERSION,
 
