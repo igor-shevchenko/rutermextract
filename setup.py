@@ -2,7 +2,7 @@ from setuptools import setup
 import sys
 from io import open
 
-VERSION = '0.2'
+VERSION = '0.3'
 
 install_requires = [
     'pymorphy2 >=0.8'
