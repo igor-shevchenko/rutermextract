@@ -39,8 +39,17 @@ class ParsedWord(object):
     def is_genitive(self):
         return self.case_is('gent')
 
-    def get_nominal(self):
-        inflected = self.parsed.inflect(set(['nomn']))
+    def get_nominal(self, dependable_noun=None):
+        gr = {'nomn'}
+	    # если есть существительное, у зависимого прилагательного или причастия 
+	    # пробуем сопоставить род и число
+        if dependable_noun:
+            gr.add(dependable_noun.parsed.tag.gender)
+            gr.add(dependable_noun.parsed.tag.number)
+        inflected = self.parsed.inflect(gr)
+        if not inflected and dependable_noun:
+            gr.remove(dependable_noun.parsed.tag.gender)
+            inflected = self.parsed.inflect(gr)
         if inflected:
             return inflected.word
         # Слово не удаётся просклонять (например, это число)
