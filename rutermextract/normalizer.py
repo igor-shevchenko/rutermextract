@@ -8,8 +8,10 @@ class Normalizer(object):
         normalized = []
         for i, token in enumerate(chunk):
             if token.is_adjective() or token.is_participle():
-                # Прилагательные и причастия приводятся к именительному падежу.
-                normalized.append(token.get_nominal())
+                # Сначала пробуем сопоставить прилагательное или причастие с существительным, 
+				# от которого оно зависит - если найдём. Иначе приводим к именительному падежу.
+                dependable_noun = next((x for x in chunk[i+1:] if x.is_noun()), None)
+                normalized.append(token.get_nominal(dependable_noun))
             elif token.is_noun():
                 # Первое существительное приводится к именительному падежу, а остальные берутся в родительном.
                 normalized.append(token.get_nominal())
