@@ -41,10 +41,13 @@ class ParsedWord(object):
 
     def get_nominal(self, dependable_noun=None):
         gr = {'nomn'}
-		# если есть существительное, у зависимого прилагательного или причастия 
-		# пробуем сопоставить род и число
-        if dependable_noun:
+        # если есть существительное, то у зависимого от него прилагательного или причастия 
+        # пробуем сопоставить род и число
+        # увы, нужно проверять на наличие значений в тэгах OpenCorpora,
+        # т.к. не у всех слов они полностью заполнены, и pymorphy падает
+        if dependable_noun and dependable_noun.parsed.tag.gender:
             gr.add(dependable_noun.parsed.tag.gender)
+        if dependable_noun and dependable_noun.parsed.tag.number:
             gr.add(dependable_noun.parsed.tag.number)
         inflected = self.parsed.inflect(gr)
         if not inflected and dependable_noun:
